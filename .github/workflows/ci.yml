@@ -14,4 +14,4 @@ jobs:
           script:
             cd ~/projets/demo1/vinc
             pwd
-            touche vincent.txt
+            touch vincent.txt
