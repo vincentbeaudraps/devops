@@ -1,11 +1,9 @@
 # syntax=docker/dockerfile:1
-FROM busybox:latest
-COPY --chmod=755 <<EOF /app/run.sh
-#!/bin/sh
-while true; do
-  echo -ne "The time is now $(date +%T)\\r"
-  sleep 1
-done
-EOF
-
-ENTRYPOINT /app/run.sh
+FROM node:19-alpine3.16
+WORKDIR /app
+COPY ./ /app
+RUN ls -a
+RUN npm install
+RUN npm run build
+EXPOSE 3018
+CMD ["npm", "run", "start"]
