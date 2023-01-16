@@ -40,5 +40,5 @@ jobs:
             docker rm clockboxvincent
             docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
             docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-            docker run --name clockboxvincent -d -p 3018:3018 ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
+            docker run -e "chaine=${{ secrets.CHAINE }}" --name clockboxvincent -d -p 3018:3018 ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
             pwd
